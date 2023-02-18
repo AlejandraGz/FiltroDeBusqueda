@@ -1,0 +1,46 @@
+<p>
+  <mat-toolbar color="primary">
+    <span>Tarea Filtros</span>
+  </mat-toolbar>
+</p>
+<div class="row">
+  <div class="col"></div>
+  <div class="col-3 d-flex justify-content-center">
+    <form id="formul">
+      <label for="">Buscar por precio:</label><br>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="price" name="price" placeholder="Ingrese un precio">
+      </mat-form-field>
+      <button mat-raised-button type="button" (click)="sendPrice()">Buscar</button>
+    </form>
+  </div>
+  <div class="col-3 d-flex justify-content-center">
+    <form>
+      <label for="">Limitar busquedas a:</label><br>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="limite" name="limite" placeholder="Ingrese un número">
+      </mat-form-field>
+      <button mat-raised-button type="button" (click)="sendLimit()">Buscar</button>
+    </form>
+  </div>
+  <div class="col"></div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col" *ngFor="let hotel of airbnbData">
+      <div class="card" style="width: 18rem;">
+        <img class="hotel-image" [src]="hotel.images.picture_url"  alt="">
+        <div class="card-body">
+          <p><b>Nombre: </b> {{ hotel.name }}</p>
+          <p class="descripcion"><b>Descripción: </b> {{hotel.description}}</p>
+          <p><b>Precio: </b> ${{hotel.price.$numberDecimal}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>
